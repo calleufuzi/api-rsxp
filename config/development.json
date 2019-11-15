@@ -2,6 +2,7 @@
     "name": "development",
     "interface": "mysql",
     "https": false,
+    "client_id":"rxsp",
     "cors": {
         "origin":["*"],
         "methods": ["GET","HEAD","PUT","PATCH","POST","DELETE"]
