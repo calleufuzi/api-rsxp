@@ -1,0 +1,63 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [{
+          "type": "node",
+          "request": "launch",
+          "name": "api-nodejs-dev",
+          "runtimeExecutable": "${workspaceFolder}/node_modules/nodemon/bin/nodemon.js",
+          "program": "${workspaceFolder}/bin/www",
+          "cwd": "${workspaceFolder}",
+          "restart": true,
+          "outputCapture": "std",
+          "console": "integratedTerminal",
+          "internalConsoleOptions": "neverOpen",
+          "env": {
+              "NODE_ENV": "development"
+          }
+      },
+      {
+          "type": "node",
+          "request": "launch",
+          "name": "api-nodejs-stg",
+          "program": "${workspaceFolder}/bin/www",
+          "cwd": "${workspaceFolder}",
+          "outputCapture": "std",
+          "env": {
+              "NODE_ENV": "staging"
+          }
+      },
+      {
+          "type": "node",
+          "request": "launch",
+          "name": "api-nodejs-prod",
+          "program": "${workspaceFolder}/bin/www",
+          "outputCapture": "std",
+          "cwd": "${workspaceFolder}",
+          "env": {
+              "NODE_ENV": "production"
+          }
+      },{
+          "type": "node",
+          "request": "launch",
+          "name": "api-nodejs-test",
+          "program": "${workspaceFolder}/bin/www",
+          "cwd": "${workspaceFolder}",
+          "outputCapture": "std",
+          "env": {
+              "NODE_ENV": "test"
+          }
+      },{
+          "name": "Docker: api-nodejs",
+          "type": "node",
+          "request": "attach",
+          "port": 9229,
+          "address": "localhost",
+          "localRoot": "${workspaceFolder}",
+          "remoteRoot": "/api-nodejs",
+          "protocol": "inspector",
+          "restart": true
+      }]
+}

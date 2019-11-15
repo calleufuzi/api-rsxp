@@ -1,0 +1,25 @@
+{
+    "name": "development",
+    "interface": "mysql",
+    "https": false,
+    "cors": {
+        "origin":["*"],
+        "methods": ["GET","HEAD","PUT","PATCH","POST","DELETE"]
+    },
+    "aws": {
+        "accountName": "",
+        "s3": {
+            "apiVersion": "2006-03-01",
+            "region": "",
+            "expires": ""
+        },
+        "sns": {
+            "apiVersion": "2010-03-31",
+            "region": ""
+        },
+        "ses": {
+            "apiVersion": "2010-03-31",
+            "region": ""
+        }
+    }
+}
