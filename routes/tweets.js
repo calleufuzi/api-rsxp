@@ -19,13 +19,14 @@ router.get("/", async (req, res, next) => {
 
     socketio.on("connection", socket => {
       socketio.emit("allTweet", tweets);
+      Tweeter.streamTweet("#code").on("tweet", tweet => {
+        socketio.emit("tweet", { tweet });
+      });
     });
 
-    Tweeter.streamTweet("#code").on("tweet", tweet => {
-      socketio.emit("tweet", { tweet });
-    });
-
-    res.status(200).send("Tweets coletados com sucesso!");
+    res
+      .status(200)
+      .send({ message: "Tweets resgatado com sucesso", data: tweets });
   } catch (error) {
     throw new Error(error);
   }
