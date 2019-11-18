@@ -8,10 +8,24 @@ const logger = require("morgan");
 const socketio = require("socket.io")();
 const cors = require("cors");
 const compression = require("compression");
+const helmet = require('helmet');
+const config = require('config');
 
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const tweetRouter = require("./routes/tweets");
+
+const twitterCredential = {
+  consumer_key: process.env.TWITTER_CONSUMER_KEY,
+  consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
+  access_token: process.env.TWITTER_ACCESS_TOKEN,
+  access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
+};
+
+const tweeter_seach_key = process.env.TWITTER_SEARCH_KEY
+
+const TwiterClass = require("./services/Twitter");
+const Tweeter = new TwiterClass(twitterCredential);
 
 const corsOptions = require("./helpers/cors");
 
@@ -67,6 +81,14 @@ app.use(
     limit: "50mb"
   })
 );
+
+Tweeter.streamTweet(tweeter_seach_key).on("tweet", tweet => {
+  socketio.emit("tweet", { tweet });
+});
+
+socketio.on("connection", socket => {
+  console.log('ID', socket.id);
+});
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
