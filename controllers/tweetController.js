@@ -10,6 +10,7 @@ const twitterCredential = {
 
 const TwitterClass = require("../services/Twitter");
 const Twitter = new TwitterClass(twitterCredential);
+const { formatTweet } = require('../helpers/tweet-formater')
 
 const listRecentTweets = async (req, res) => {
     try {
@@ -24,7 +25,8 @@ const listRecentTweets = async (req, res) => {
 
 const streamTweets = (io) => {
     Twitter.tweetStream(search_key).on("tweet", tweet => {
-        io.emit("tweet", { tweet });
+        const formatedTweet = formatTweet(tweet)
+        io.emit("tweet", { tweet: formatedTweet });
     });
 }
 

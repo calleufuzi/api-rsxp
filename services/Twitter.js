@@ -1,7 +1,6 @@
 const twitterModule = require("twit");
 const { formatTweet } = require('../helpers/tweet-formater')
 
-
 class Twitter {
   constructor(credential) {
     if (!credential) throw new Error("No credentials provide");
