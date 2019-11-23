@@ -37,6 +37,8 @@ class TwitterStream extends Twitter {
             }
           }
         );
+      }else{
+        throw new Error("Tweets quantity and search key is required")
       }
     });
   }
