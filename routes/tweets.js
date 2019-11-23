@@ -9,12 +9,12 @@ const twitterCredential = {
 };
 
 const TwiterClass = require("../services/Twitter");
-const Tweeter = new TwiterClass(twitterCredential);
+const Twitter = new TwiterClass(twitterCredential);
 
-/* GET users listing. */
+/* GET twits listing. */
 router.get("/", async (req, res, next) => {
   try {
-    const tweets = await Tweeter.getRecentsTweet(40, "#code");
+    const tweets = await Twitter.getRecentTweets(40, "#code");
     res
       .status(200)
       .send({ message: "Tweets resgatado com sucesso", data: tweets });

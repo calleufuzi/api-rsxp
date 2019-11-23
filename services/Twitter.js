@@ -17,7 +17,7 @@ class TwitterStream extends Twitter {
    * @param {number} twitsQty number of twitts to get
    * @param {string} searchKey search key for twits
    */
-  getRecentsTweet(twitsQty, searchKey) {
+  getRecentTweets(twitsQty, searchKey) {
     return new Promise((res, rej) => {
       if (twitsQty && searchKey) {
         this.client.get(
@@ -51,7 +51,7 @@ class TwitterStream extends Twitter {
     });
   }
 
-  streamTweet(searchKey) {
+  tweetStream(searchKey) {
     const stream = this.client.stream("statuses/filter", {
       track: searchKey
     });
