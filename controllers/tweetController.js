@@ -1,4 +1,6 @@
-const { twitter  } = require("config");
+const { twitter_config } = require("config");
+const { search_key, search_qty } = twitter_config
+
 const twitterCredential = {
     consumer_key: process.env.TWITTER_CONSUMER_KEY,
     consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
@@ -9,9 +11,9 @@ const twitterCredential = {
 const TwitterClass = require("../services/Twitter");
 const Twitter = new TwitterClass(twitterCredential);
 
-const listRecentTweets = async (req, res, next) => {
+const listRecentTweets = async (req, res) => {
     try {
-        const tweets = await Twitter.getRecentTweets(twitter.search_qty, twitter.search_key);
+        const tweets = await Twitter.getRecentTweets(search_qty, search_key);
         res
             .status(200)
             .send({ message: "Tweets resgatado com sucesso", data: tweets });
@@ -20,4 +22,10 @@ const listRecentTweets = async (req, res, next) => {
     }
 }
 
-module.exports = { listRecentTweets }
+const streamTweets = (io) => {
+    Twitter.tweetStream(search_key).on("tweet", tweet => {
+        io.emit("tweet", { tweet });
+    });
+}
+
+module.exports = { listRecentTweets, streamTweets }

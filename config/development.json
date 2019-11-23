@@ -5,7 +5,7 @@
         "origin":["*"],
         "methods": ["GET","HEAD","PUT","PATCH","POST","DELETE"]
     },
-    "twitter" : {
+    "twitter_config" : {
         "search_key": "#code",
         "search_qty": 50
     }

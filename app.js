@@ -8,23 +8,13 @@ const socketio = require("socket.io")();
 const cors = require("cors");
 const compression = require("compression");
 const helmet = require('helmet');
-const { twitter } = require('config')
+
+const corsOptions = require("./helpers/cors");
 
 const indexRouter = require("./routes/index");
 const tweetRouter = require("./routes/tweets");
 
-const twitterCredential = {
-  consumer_key: process.env.TWITTER_CONSUMER_KEY,
-  consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
-  access_token: process.env.TWITTER_ACCESS_TOKEN,
-  access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
-};
-
-
-const TwiterClass = require("./services/Twitter");
-const Twitter = new TwiterClass(twitterCredential);
-
-const corsOptions = require("./helpers/cors");
+const { streamTweets } = require('./controllers/tweetController')
 
 const app = express();
 
@@ -71,9 +61,8 @@ app.use(
   })
 );
 
-Twitter.tweetStream(twitter.search_key).on("tweet", tweet => {
-  socketio.emit("tweet", { tweet });
-});
+// Stream recent tweets
+streamTweets(socketio)
 
 socketio.on("connection", socket => {
   console.log('ID', socket.id);
