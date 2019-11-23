@@ -5,7 +5,7 @@ API para Social Wall do Twitter apresentado no workshop do evento da Rocketseat 
 
 ## Print:
 Um print do sistema.
-<img src="./print-social-wall.png" alt="Print do Sistema" width=300>
+<img src="./print-social-wall.png" alt="Print do Sistema" width=500 style="display:block">
 
 ## Iniciando
 
