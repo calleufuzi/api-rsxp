@@ -18,29 +18,19 @@ class TwitterStream extends Twitter {
    * @param {number} twitsQty number of twitts to get
    * @param {string} searchKey search key for twits
    */
-  getRecentTweets(twitsQty, searchKey) {
-    return new Promise((res, rej) => {
-      if (twitsQty && searchKey) {
-        this.client.get(
-          "search/tweets",
-          { q: searchKey, count: twitsQty },
-          (err, data, response) => {
-            let tweetArray = [];
-
-            if (err) throw new Error(err);
-
-            if (data && data.statuses.length > 0) {
-              tweetArray = data.statuses.map((tweet) => formatTweet(tweet));
-              res(tweetArray);
-            } else {
-              throw new Error("No tweets Found!");
-            }
-          }
-        );
-      }else{
-        throw new Error("Tweets quantity and search key is required")
+  async getRecentTweets(twitsQty, searchKey) {
+    try {
+      let tweetArray = [];
+      const { data } = await this.client.get("search/tweets", { q: searchKey, count: twitsQty });
+      if (data && data.statuses.length > 0) {
+        tweetArray = data.statuses.map((tweet) => formatTweet(tweet));
+        return tweetArray
+      } else {
+        throw new Error("No tweets Found!");
       }
-    });
+    } catch (err) {
+      throw new Error(err);
+    }
   }
 
   /**

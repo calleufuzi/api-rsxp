@@ -65,7 +65,7 @@ app.use(
 streamTweets(socketio)
 
 socketio.on("connection", socket => {
-  console.log('ID', socket.id);
+  console.log('Connected Client ID', socket.id);
 });
 
 app.use("/", indexRouter);
