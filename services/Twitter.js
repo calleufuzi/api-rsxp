@@ -41,6 +41,10 @@ class TwitterStream extends Twitter {
     });
   }
 
+  /**
+   * @description get stream of tweets
+   * @param {string} searchKey search key for twits
+   */
   tweetStream(searchKey) {
     const stream = this.client.stream("statuses/filter", {
       track: searchKey
