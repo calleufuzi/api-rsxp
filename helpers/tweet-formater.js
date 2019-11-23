@@ -1,5 +1,6 @@
-const formatTweet = ({ text, user, entities }) => {
+const formatTweet = ({ text, user, entities, id } ) => {
     return {
+        id,
         text,
         userScreenName: "@" + user.screen_name,
         userImage: user.profile_image_url_https,
