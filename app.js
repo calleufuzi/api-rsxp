@@ -2,14 +2,12 @@ const createError = require("http-errors");
 const express = require("express");
 const path = require("path");
 const cookieParser = require("cookie-parser");
-const session = require('express-session');
 const bodyParser = require("body-parser");
 const logger = require("morgan");
 const socketio = require("socket.io")();
 const cors = require("cors");
 const compression = require("compression");
 const helmet = require('helmet');
-const config = require('config');
 
 const indexRouter = require("./routes/index");
 const tweetRouter = require("./routes/tweets");
@@ -52,14 +50,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
-
-//Configure session;
-app.use(session({
-  key: config.get('client_id'),
-  secret: "]A!m8L?%&G!b=9?6h[", //this can be any name. Its the secret to include in cookie
-  resave: false,
-  saveUninitialized: false,
-}));
 
 //Configure CORS for all routes;
 app.use(cors(corsOptions));
