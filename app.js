@@ -8,7 +8,7 @@ const socketio = require("socket.io")();
 const cors = require("cors");
 const compression = require("compression");
 const helmet = require('helmet');
-const { twitter_search_key } = require('config')
+const { twitter } = require('config')
 
 const indexRouter = require("./routes/index");
 const tweetRouter = require("./routes/tweets");
@@ -71,7 +71,7 @@ app.use(
   })
 );
 
-Twitter.tweetStream(twitter_search_key).on("tweet", tweet => {
+Twitter.tweetStream(twitter.search_key).on("tweet", tweet => {
   socketio.emit("tweet", { tweet });
 });
 

@@ -5,5 +5,8 @@
         "origin":["*"],
         "methods": ["GET","HEAD","PUT","PATCH","POST","DELETE"]
     },
-    "twitter_search_key": "#code"
+    "twitter" : {
+        "search_key": "#code",
+        "search_qty": 50
+    }
 }

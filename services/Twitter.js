@@ -1,5 +1,6 @@
 const twitterModule = require("twit");
 
+
 class Twitter {
   constructor(credential) {
     if (!credential) throw new Error("No credentials provide");

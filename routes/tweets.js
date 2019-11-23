@@ -1,26 +1,8 @@
 const express = require("express");
 const router = express.Router();
+const { listRecentTweets } = require("../controllers/tweetController")
 
-const twitterCredential = {
-  consumer_key: process.env.TWITTER_CONSUMER_KEY,
-  consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
-  access_token: process.env.TWITTER_ACCESS_TOKEN,
-  access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
-};
-
-const TwiterClass = require("../services/Twitter");
-const Twitter = new TwiterClass(twitterCredential);
-
-/* GET twits listing. */
-router.get("/", async (req, res, next) => {
-  try {
-    const tweets = await Twitter.getRecentTweets(40, "#code");
-    res
-      .status(200)
-      .send({ message: "Tweets resgatado com sucesso", data: tweets });
-  } catch (error) {
-    throw new Error(error);
-  }
-});
+/* GET tweets listing. */
+router.get("/", listRecentTweets);
 
 module.exports = router;
