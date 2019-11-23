@@ -12,7 +12,6 @@ const helmet = require('helmet');
 const config = require('config');
 
 const indexRouter = require("./routes/index");
-const usersRouter = require("./routes/users");
 const tweetRouter = require("./routes/tweets");
 
 const twitterCredential = {
@@ -91,7 +90,6 @@ socketio.on("connection", socket => {
 });
 
 app.use("/", indexRouter);
-app.use("/users", usersRouter);
 app.use("/tweets", tweetRouter);
 
 // catch 404 and forward to error handler
