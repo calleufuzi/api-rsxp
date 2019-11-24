@@ -6,7 +6,7 @@
         "methods": ["GET","HEAD","PUT","PATCH","POST","DELETE"]
     },
     "twitter_config" : {
-        "search_key": "#rsxp",
+        "search_key": "#rsxp2019",
         "search_qty": 50
     }
 }
