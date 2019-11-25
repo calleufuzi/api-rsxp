@@ -18,46 +18,5 @@
               "NODE_ENV": "development"
           }
       },
-      {
-          "type": "node",
-          "request": "launch",
-          "name": "api-nodejs-stg",
-          "program": "${workspaceFolder}/bin/www",
-          "cwd": "${workspaceFolder}",
-          "outputCapture": "std",
-          "env": {
-              "NODE_ENV": "staging"
-          }
-      },
-      {
-          "type": "node",
-          "request": "launch",
-          "name": "api-nodejs-prod",
-          "program": "${workspaceFolder}/bin/www",
-          "outputCapture": "std",
-          "cwd": "${workspaceFolder}",
-          "env": {
-              "NODE_ENV": "production"
-          }
-      },{
-          "type": "node",
-          "request": "launch",
-          "name": "api-nodejs-test",
-          "program": "${workspaceFolder}/bin/www",
-          "cwd": "${workspaceFolder}",
-          "outputCapture": "std",
-          "env": {
-              "NODE_ENV": "test"
-          }
-      },{
-          "name": "Docker: api-nodejs",
-          "type": "node",
-          "request": "attach",
-          "port": 9229,
-          "address": "localhost",
-          "localRoot": "${workspaceFolder}",
-          "remoteRoot": "/api-nodejs",
-          "protocol": "inspector",
-          "restart": true
-      }]
+    ]
 }

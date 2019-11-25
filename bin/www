@@ -3,15 +3,14 @@
 /**
  * Module dependencies.
  */
+const dotenv = require("dotenv");
+const operation = dotenv.config({ path: `env/${process.env.NODE_ENV}.env` });
 
 if (!process.env.NODE_ENV) {
   let msg = "ERROR: SERVER RUNNING WITHOUT NODE_ENV CONFIG!";
   console.log(msg);
   throw new Error(msg);
 }
-
-const dotenv = require("dotenv");
-const operation = dotenv.config({ path: `env/${process.env.NODE_ENV}.env` });
 
 if (operation.error) {
   throw new Error(`Verify that .env file exists in the env folder`);
