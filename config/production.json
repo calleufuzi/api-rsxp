@@ -1,0 +1,12 @@
+{
+    "name": "production",
+    "https": false,
+    "cors": {
+        "origin":["*"],
+        "methods": ["GET","HEAD","PUT","PATCH","POST","DELETE"]
+    },
+    "twitter_config" : {
+        "search_key": "#rsxp",
+        "search_qty": 50
+    }
+}

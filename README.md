@@ -1,19 +1,16 @@
-# Nome do projeto
+# API RSXP
 
 ## Descrição:
-Boilerplate padrão para construção de apis em nodejs do time DevÁgil.
+API para Social Wall do Twitter apresentado no workshop do evento da Rocketseat na RSXP
 
 ## Print:
-Um print do sistema.
+<img src="./print-social-wall.png" alt="Print do Sistema" width=500 style="display:block">
 
 ## Iniciando
 
 ### Pré-requisitos
 
 - NodeJs > 10
-- Mysql = 5.7
-- Elasticsearch > 6.0 (Optional for register application logs).
-
 
 ### Instalando
 
@@ -22,7 +19,7 @@ Um print do sistema.
 Faça o fork desse repositório para o sub-grupo do projeto que está desenvolvendo.
 
 ```
-git clone 'repository-link'
+git clone https://github.com/calleufuzi/api-rsxp
 ```
 
 Crie as branchs manualmente ou utilize o git flow:
@@ -42,22 +39,23 @@ MANUALMENTE
 ```
 
 ### Configurando
-Preencha os arquivos de configuração na pasta "config" com as informações do banco de dados e serviços usados pelo projeto.
+Preencha os arquivos de configuração na pasta "config" com as informações dos serviços usados pelo projeto.
 
 Crie o arquivo development.env dentro da pasta .env e preecha-o com as configurações necessárias usando .env.example como exemplo.
 
 Execute os seguintes comandos:
 ```
 > npm install or yarn
-
-> NODE_ENV=development node_modules/.bin/sequelize db:create --env development
-> NODE_ENV=development node_modules/.bin/sequelize db:migrate --env development
-> NODE_ENV=development node_modules/.bin/sequelize db:seed:all --env development
 ```
 
 ### Rodando
 ```
-> npm start
+> npm start ou yarn start
+```
+
+### Rodando com nodemon
+```
+> npm devstart ou yarn devstart
 ```
 
 ### Acessando a api
@@ -72,34 +70,21 @@ Abaixo segue a estrutura de pastas do projeto.
 
     .
     ├── .vscode                   # Folder with the configuration files to run debug mode in the VS Code IDE.
-    ├── bin                       # Folder with www file responsible for start web server. 
+    ├── bin                       # Folder with www file responsible for start web server.
     ├── config                    # Folder with the configuration files for run project.
-    ├── connections               # Folder with the connection database files. (e.g mysql, postgree, elasticsearch)
-    ├── env                       # Folder with the environment variables files. (e.g database, aws services, elasticsearch)
+    ├── controllers                    # Folder with the controllers of the project
+    ├── env                       # Folder with the environment variables files. (e.g database, aws services)
     ├── helpers                   # Folder with the helpers files.
-    ├── interfaces                # Folder with the interface files to databases used in project.
-        ├── mysql                 
-            ├── classes           # Folder with the classes files contains validations and business rules. (e.g user.js)
-            └── models            # Folder with the sequelize models files to represent a table in the database.
     ├── middlewares               # Folder with the middlewares files to use before executing the routes.
-    ├── migrations                # Folder with the sequelize migrations files.
     ├── node_modules              # Folder with project modules.
     ├── public                    # Folder with public files (e.g assets, js, css).
     ├── routes                    # Folder with the routes files from project.
-    ├── seeders                   # Folder with the sequelize seeders files.
-    ├── services                  # Folder with services used by project (aws, google, azure, dalet).
+    ├── services                  # Folder with services used by project (aws, google, azure, twitter).
         ├── aws
-        ├── dalet
-        └── google
-    ├── tests                     # Folder with the tests files (integration, unit).
-    ├── uploads                   # Folder with the uploaded files.
+        └── twitter
     ├── views                     # Folder with views (e.g ejs, html).
     ├── .gitignore
-    ├── .npmrc
-    ├── .sequelizerc
-    ├── adfs_prod.pem
     ├── app                       # Entrypoint for project.
-    ├── build.sh                  # Shellscript for build project.
     ├── package.json
     ├── pm2.json                  # PM2 configuration file to start project.
     └── readme.md
