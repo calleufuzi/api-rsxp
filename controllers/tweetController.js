@@ -15,7 +15,8 @@ const { formatTweet } = require('../helpers/tweet-formater')
 const listRecentTweets = async (req, res) => {
     try {
         const tweets = await Twitter.getRecentTweets(search_qty, search_key);
-        res
+        if (!tweets || tweets.length <= 0) return res.status(200).send({ message: "Nenhum Tweet foi encontrado", data: [] })
+        return res
             .status(200)
             .send({ message: "Tweets resgatado com sucesso", data: tweets });
     } catch (error) {

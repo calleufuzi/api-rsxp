@@ -25,8 +25,6 @@ class TwitterStream extends Twitter {
       if (data && data.statuses.length > 0) {
         tweetArray = data.statuses.map((tweet) => formatTweet(tweet));
         return tweetArray
-      } else {
-        throw new Error("No tweets Found!");
       }
     } catch (err) {
       throw new Error(err);
