@@ -80,8 +80,7 @@ Abaixo segue a estrutura de pastas do projeto.
     ├── public                    # Folder with public files (e.g assets, js, css).
     ├── routes                    # Folder with the routes files from project.
     ├── services                  # Folder with services used by project (aws, google, azure, twitter).
-        ├── aws
-        └── twitter
+        ├── twitter
     ├── views                     # Folder with views (e.g ejs, html).
     ├── .gitignore
     ├── app                       # Entrypoint for project.
